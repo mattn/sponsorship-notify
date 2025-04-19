@@ -44,8 +44,6 @@ const (
 var imageBytes []byte
 
 func post(ctx context.Context, cfg *config) error {
-	filePath := "image.png"
-
 	config := oauth1.NewConfig(cfg.ClientToken, cfg.ClientSecret)
 	token := oauth1.NewToken(cfg.AccessToken, cfg.AccessSecret)
 	httpClient := config.Client(oauth1.NoContext, token)
@@ -53,7 +51,7 @@ func post(ctx context.Context, cfg *config) error {
 	var body bytes.Buffer
 	writer := multipart.NewWriter(&body)
 
-	part, err := writer.CreateFormFile("media", filePath)
+	part, err := writer.CreateFormFile("media", "image.png")
 	if err != nil {
 		log.Fatal("Error creating form file:", err)
 		return err
