@@ -1,0 +1,9 @@
+sponsorship-notify
+sponsorship-notify.exe
+test.sh
+backup
+*.json
+k8s
+*.sh
+*.bat
+*.cmd
