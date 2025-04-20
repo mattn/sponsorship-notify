@@ -188,7 +188,13 @@ func handleWebhook(cfg *config) http.HandlerFunc {
 		}
 
 		if sponsorShipEvent.Action != nil && *sponsorShipEvent.Action == "created" {
-			post(context.Background(), cfg)
+			err = post(context.Background(), cfg)
+			if err != nil {
+				log.Println(err)
+				w.WriteHeader(http.StatusBadRequest)
+				fmt.Fprintln(w, "Failed to send notify")
+				return
+			}
 		}
 
 		w.WriteHeader(http.StatusOK)
