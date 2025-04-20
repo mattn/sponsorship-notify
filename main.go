@@ -23,7 +23,7 @@ import (
 
 const name = "sponsorship-notify"
 
-const version = "0.0.2"
+const version = "0.0.3"
 
 var revision = "HEAD"
 
